@@ -1,0 +1,118 @@
+# Write your code here
+import random
+global user_runs
+score = {}
+user_runs = 0
+name = input("Enter your name: \t")
+print("Hello, " + name)
+
+match = " "
+first_user_input = input()
+if first_user_input == "":
+    option_list = "rock", "paper", "scissors"
+else:
+    option_list = "water", "scissors", "fire", "rock", "gun", "lightning", "devil", "dragon", "paper", "snake", "tree", "human", "air", "wolf", "sponge"
+
+print("Okay, let's start")
+
+while True:
+    user_input = input()
+    if user_input == "!exit":
+        print("Bye!")
+        break
+    elif user_input in option_list:
+        option = str(random.choice(option_list))
+        if option == user_input:
+            match = "draw"
+            user_runs = user_runs + 50
+            print("There is a draw (" + option + ")")
+        elif option == "water" and user_input in ('scissors', 'fire', 'rock', 'gun', 'lightning', 'devil', 'dragon'):
+            match = "win"
+            user_runs = user_runs + 100
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "dragon" and option in ('snake', 'scissors', 'fire', 'rock', 'gun', 'lightning', 'devil'):
+            match = "win"
+            user_runs = user_runs + 100
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "devil" and option in ('tree', 'human', 'snake', 'scissors', 'fire', 'rock', 'gun'):
+            match = "win"
+            user_runs = user_runs + 100
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "gun" and option in ('wolf', 'tree', 'human', 'snake', 'scissors', 'fire', 'rock'):
+            match = "win"
+            user_runs = user_runs + 100
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "rock" and option in ('sponge', 'wolf', 'tree', 'human', 'snake', 'scissors', 'fire'):
+            match = "win"
+            user_runs = user_runs + 100
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "fire" and option in ('paper', 'sponge', 'wolf', 'tree', 'human', 'snake', 'scissors'):
+            match = "win"
+            user_runs = user_runs + 100
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "scissors" and option in ('air', 'paper', 'sponge', 'wolf', 'tree', 'human', 'snake'):
+            match = "win"
+            user_runs = user_runs + 100
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "snake" and option in ('water', 'air', 'paper', 'sponge', 'wolf', 'tree', 'human'):
+            match = "win"
+            user_runs = user_runs + 100
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "human" and option in ('dragon', 'water', 'air', 'paper', 'sponge', 'wolf', 'tree'):
+            match = "win"
+            user_runs = user_runs + 100
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "tree" and option in ('devil', 'dragon', 'water', 'air', 'paper', 'sponge', 'wolf'):
+            user_runs = user_runs + 100
+            match = "win"
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "wolf" and option in ('lightning', 'devil', 'dragon', 'water', 'air', 'paper', 'sponge'):
+            user_runs = user_runs + 100
+            match = "win"
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "sponge" and option in ('gun', 'lightning', 'devil', 'dragon', 'water', 'air', 'paper'):
+            user_runs = user_runs + 100
+            match = "win"
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "paper" and option in ("rock", "gun", "lightning", "devil", "dragon", "water"):
+            user_runs = user_runs + 100
+            match = "win"
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "air" and option in ('fire', 'rock', 'gun', 'lightning', 'devil', 'dragon', 'water'):
+            user_runs = user_runs + 100
+            match = "win"
+            print("Well done. The computer chose " + option + " and failed")
+        elif user_input == "lightning" and option in ('tree', 'human', 'snake', 'scissors', 'fire', 'rock', 'gun'):
+            user_runs = user_runs + 100
+            match = "win"
+            print("Well done. The computer chose " + option + " and failed")
+        else:
+            match = "lose"
+            user_runs = user_runs
+            print("Sorry, but the computer chose " + option)
+    elif user_input == "!rating":
+        file_open = open("rating.txt", "r")
+        read_file = file_open.readlines()
+        print(user_runs)
+        for line in read_file:
+            if name in line:
+                user_score = line.split()
+                user_runs = int(user_score[1]) + user_runs
+                print(user_runs)
+            else:
+                user_runs = 0 + user_runs
+            
+                if user_runs > 0:
+                    print("Your rating: " + str(user_runs))
+                    break
+                elif user_runs == 0:
+                    print("Your rating: 0")
+                    break
+                else:
+                    pass
+    elif user_input not in option_list:
+        print("Invalid input")
+
+    else:
+
+        pass
